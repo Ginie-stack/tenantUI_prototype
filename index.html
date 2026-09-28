@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multitenant Video SaaS Prototype</title>
+    <meta
+      name="description"
+      content="Frontend prototype for a multitenant video SaaS tenant dashboard."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app-shell" class="app-shell hidden">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-menu" type="button" data-action="toggle-sidebar" aria-label="Toggle navigation">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="brand-mark">
+            <span class="brand-icon">M</span>
+            <div>
+              <div class="brand-name">MwanyikaTube</div>
+              <div class="brand-subtitle">Tenant Portal</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="ghost-button" type="button" data-action="view-website">View Website</button>
+          <button class="icon-button" type="button" data-action="show-notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5m6 0a3 3 0 0 1-6 0"/></svg>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="profile-wrap">
+            <button class="profile-button" type="button" data-action="toggle-profile-menu" aria-label="Open profile menu">
+              <span class="avatar">DT</span>
+              <span>Demo Tenant</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+            </button>
+            <div class="profile-menu hidden" id="profile-menu">
+              <button type="button" data-action="goto-page" data-page="my-account">My Account</button>
+              <button type="button" data-action="view-website">View Website</button>
+              <button type="button" data-action="logout" class="danger">Logout</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+          <nav class="side-nav" aria-label="Sidebar navigation">
+            <button class="nav-item active" type="button" data-action="goto-page" data-page="dashboard">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5L12 5l8 7.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-7.5z"/></svg>
+              </span>
+              <span>Dashboard</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="videos">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5v-9zm7 2.2l4 2.3-4 2.3v-4.6z"/></svg>
+              </span>
+              <span>Videos</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="plans">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5v-9zm3 0h8v3H8v-3z"/></svg>
+              </span>
+              <span>Plans</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="customize-site">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4zm0 5l-4 2v2.5c0 2.5 1.7 4.6 4 5.5 2.3-.9 4-3 4-5.5V10l-4-2zm1.5 2.5l1.5 1.5-4 4-2.5-2.5 1.5-1.5 1 1 2.5-2.5z"/></svg>
+              </span>
+              <span>Customize Site</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="withdrawals">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H4zm3 2h10v6H7zm2 2h6v2H9z"/></svg>
+              </span>
+              <span>Withdrawals</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="transactions">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18V6h2v12H5zm5 0V9h2v9h-2zm5 0v-6h2v6h-2zm3-9h-2V6h2v3z"/></svg>
+              </span>
+              <span>Transaction History</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="verification">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 9.3-8 10-4.6-.7-8-5-8-10V6l8-4zm-1 12.5L7.5 11l-1.4 1.4L11 17.2l6.9-6.9-1.4-1.4-5.5 5.6z"/></svg>
+              </span>
+              <span>Transaction Verification</span>
+            </button>
+            <button class="nav-item" type="button" data-action="goto-page" data-page="my-account">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.4 0-8 2.7-8 6v1h16v-1c0-3.3-3.6-6-8-6z"/></svg>
+              </span>
+              <span>My Account</span>
+            </button>
+          </nav>
+
+          <div class="sidebar-footer">
+            <button class="sidebar-preview" type="button" data-action="view-website">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9m-9-9v9l6 3"/></svg>
+              </span>
+              <span>View Website</span>
+            </button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div id="page-content"></div>
+        </main>
+      </div>
+    </div>
+
+    <div id="login-screen" class="login-screen">
+      <div class="login-card">
+        <div class="brand-mark login-brand">
+          <span class="brand-icon">M</span>
+          <div>
+            <div class="brand-name">MwanyikaTube</div>
+            <div class="brand-subtitle">Tenant Portal</div>
+          </div>
+        </div>
+
+        <h1>Welcome back</h1>
+        <p class="login-subtitle">Log in to your demo tenant account.</p>
+
+        <form id="login-form" class="login-form">
+          <label>
+            <span>Username or Email</span>
+            <input type="text" name="identity" placeholder="demo_tenant or tenant@example.com" />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" placeholder="Enter any password in demo" />
+          </label>
+
+          <button type="submit" class="primary-button full-width">Login</button>
+          <button type="button" class="text-button" data-action="forgot-password">Forgot Password</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modal-root"></div>
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
