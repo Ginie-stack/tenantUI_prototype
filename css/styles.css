@@ -303,6 +303,7 @@ a { color: inherit; text-decoration: none; }
 .page-content {
   max-width: 1400px;
   margin: 0 auto;
+  min-width: 0;
 }
 
 .page-header {
@@ -394,6 +395,7 @@ a { color: inherit; text-decoration: none; }
 
 .panel {
   padding: 22px;
+  min-width: 0;
 }
 
 .panel-header {
@@ -758,6 +760,14 @@ textarea { resize: vertical; min-height: 110px; }
   display: grid;
   grid-template-columns: 1.1fr 1.5fr;
   gap: 20px;
+  min-width: 0;
+}
+
+.withdrawal-layout > *,
+#withdrawal-form,
+#withdrawal-form .form-grid,
+#withdrawal-form label {
+  min-width: 0;
 }
 
 .balance-card {
@@ -804,10 +814,19 @@ textarea { resize: vertical; min-height: 110px; }
 .summary-label { color: var(--muted); }
 
 .table-wrap {
+  width: 100%;
+  min-width: 0;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel);
+}
+
+.table-wrap:focus-visible {
+  outline: 3px solid rgba(37,99,235,0.25);
+  outline-offset: 2px;
 }
 
 table {
@@ -1095,7 +1114,7 @@ th {
 
 @media (max-width: 760px) {
   .app-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .sidebar {
@@ -1115,6 +1134,7 @@ th {
 
   .main-content {
     padding: 16px;
+    min-width: 0;
   }
 
   .topbar {
@@ -1221,6 +1241,15 @@ th {
 
   .main-content {
     padding: 12px;
+  }
+
+  #withdrawal-form .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  #withdrawal-form label[style*="grid-column"] {
+    grid-column: auto !important;
   }
 
   .page-header h1 {

@@ -801,7 +801,7 @@ function renderWithdrawalsPage() {
         <div class="panel-header">
           <h2>Recent Withdrawals</h2>
         </div>
-        <div class="table-wrap">
+        <div class="table-wrap" role="region" aria-label="Recent withdrawals table" tabindex="0">
           <table>
             <thead>
               <tr>
@@ -860,7 +860,7 @@ function renderTransactionsPage() {
           </div>
         </div>
 
-        <div class="table-wrap">
+        <div class="table-wrap" role="region" aria-label="Transaction history table" tabindex="0">
           <table>
             <thead>
               <tr>
@@ -913,7 +913,7 @@ function renderVerificationPage() {
         </div>
         <p style="color: var(--muted); margin: 0 0 18px;">Last checked: a few seconds ago</p>
 
-        <div class="table-wrap">
+        <div class="table-wrap" role="region" aria-label="Pending transactions table" tabindex="0">
           <table>
             <thead>
               <tr>
